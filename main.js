@@ -5,7 +5,7 @@ const app = Vue.createApp({
             product: 'Socks',
             image: './assets/images/socks_green.jpg',
             url: "https://www.nordstrom.com/browse/men/clothing/socks?filterByColor=green",
-            inventory: 100,
+            inventory: 10,
             onSale: true,
             details: ['50% cotton', '30% wool', '20% polyester'],
             variants: [
