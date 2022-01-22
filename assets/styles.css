@@ -75,6 +75,11 @@ label {
   margin-bottom: 5px;
 }
 
+ul {
+  display: flex;
+  flex-direction: row;
+}
+
 li {
   font-size: 18px;
 }
