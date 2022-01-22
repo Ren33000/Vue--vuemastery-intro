@@ -41,6 +41,7 @@ body {
 }
 
 
+
 .disabledButton {
   background-color: #d8d8d8;
   cursor: not-allowed;
@@ -76,12 +77,17 @@ label {
 }
 
 ul {
-  display: flex;
-  flex-direction: row;
+  display: block;
+  list-style-type: none;
+
 }
 
 li {
   font-size: 18px;
+}
+
+a {
+  text-decoration: none;
 }
 
 .nav-bar {
@@ -166,9 +172,6 @@ textarea {
   margin-bottom: 20px;
 }
 
-ul {
-  list-style-type: none;
-}
 
 @media only screen and (max-width: 600px) {
   .container {

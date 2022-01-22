@@ -7,11 +7,11 @@ app.component('product-display', {
     },
     template:
     /*html*/
-    `<div class="product-display">
+    `
+    <div class="product-display">
         <div class="product-container">
         <div class="product-image">
             <img :class="{ 'out-of-stock-img': !inventory }" :src="image" alt="socks">
-            <a :href="url">link</a>
         </div>
         <div class="product-info">
             <h1>{{ title }}</h1>
@@ -19,11 +19,10 @@ app.component('product-display', {
             <p v-if="inventory > 10">In Stock</p>
             <p v-else-if="inventory <= 10 && inventory > 0">Almost sold out</p>
             <p v-else >Out of Stock</p>
-            <p v-show="inventory">Add to basket</p>
+            <a v-show="inventory" :href="url">Link</a>
             <p>Shipping: {{ shipping }}</p>
             <product-details :details="details"></product-details>
             <product-details :sizes="sizes"></product-details>
-
             <div 
                 v-for="(variant, index) in variants" 
                 :key="variant.id" 
@@ -45,11 +44,13 @@ app.component('product-display', {
                     class="button" 
                     @click="removeFromCart"
                 >
-                Remove from Cart
+                Remove item
                 </button>
             </div>
         </div>
-        </div>
+    </div>
+    <review-list v-if="reviews.length" :reviews="reviews"></review-list>
+    <review-form @review-submitted="addReview"></review-form>
     </div>`,
 
     data() {
@@ -67,6 +68,7 @@ app.component('product-display', {
                 { id: 2234, color: 'green', image: './assets/images/socks_green.jpg', quantity: 50},
                 { id: 2235, color: 'blue', image: './assets/images/socks_blue.jpg', quantity: 0}
             ],
+            reviews: []
         }
     },
     methods: {
@@ -79,6 +81,9 @@ app.component('product-display', {
         updateVariant(index) {
         this.selectedVariant = index
         // console.log(index)
+        },
+        addReview(review) {
+            this.reviews.push(review)
         }
     },
     computed: {
@@ -87,7 +92,7 @@ app.component('product-display', {
         }, 
         sale() {
             if (this.onSale) {
-                return this.brand + ' ' + this.product + 'is on sale'
+                return this.brand + ' ' + this.product + ' is on sale'
             }
             return ''
         },
