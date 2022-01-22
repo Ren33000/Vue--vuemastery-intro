@@ -2,7 +2,8 @@ const app = Vue.createApp({
     data() {
         return {
             product: 'Socks',
-            description: 'blue socks'
+            image: './assets/images/socks_green.jpg',
+            url: "https://www.nordstrom.com/browse/men/clothing/socks?filterByColor=green"
         }
     }
 })
